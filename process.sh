@@ -30,7 +30,8 @@ find ./$INPUT_FOLDER -name "*.svg" -print0 | while IFS= read -r -d '' file; do
 done
 
 # Rename the folders
-find $OUTPUT_FOLDER -depth -type d -name "* *" -execdir rename 's/ /-/g' "{}" \;
+detox -r -v $OUTPUT_FOLDER
+
 
 # Trim the files
 find ./$OUTPUT_FOLDER -type d -exec svgo --enable=removeDimensions -f {} \;
